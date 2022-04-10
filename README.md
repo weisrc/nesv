@@ -1,3 +1,3 @@
-# N.E.System Verilog
+# NESystem Verilog
 
 WIP
