@@ -1,3 +1,3 @@
 # NESystem Verilog
 
-WIP
+Psuedo-school project for fun.

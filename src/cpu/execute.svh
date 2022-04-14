@@ -5,8 +5,10 @@
 `include "columns.svh"
 
 function void execute(state_t state);
+    $display("execute.cycle:%d", state.cycle);
     `at(0) begin
-        state.op <= state.data;
+        $display("execute.data:%d", state.data);
+        state.op = state.data;
         `next
         `read
     end else case (state.op[3:0])
@@ -27,7 +29,7 @@ function void execute(state_t state);
         4'hE: column_E(state);
         4'hF: column_F(state);
     endcase
-    state.cycle <= state.cycle + 1;
+    state.cycle += 1;
 endfunction
 
 `endif
