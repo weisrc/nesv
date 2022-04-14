@@ -6,5 +6,6 @@ obj_dir/Vcpu: obj_dir
 
 obj_dir:
 	verilator --cc cpu.sv --exe main.cc --compiler clang -O3 --relative-includes
+	ls obj_dir
 
 .PHONY: obj_dir
