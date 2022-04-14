@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches-ignore: ["ci"]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - run: sudo apt-get install -y clang verilator
+      - run: make -C src/cpu
+      - if: contains(github.ref, 'main')
+        env:
+          MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          git add -f src/cpu/obj_dir
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "$MESSAGE"
+          git push origin main:ci -f
