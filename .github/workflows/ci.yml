@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-      - run: apt-get update
+      - run: sudo apt-get update
       - run: sudo apt-get install -y clang verilator
       - run: make -C src/cpu
       - if: contains(github.ref, 'main')
