@@ -1,9 +1,9 @@
-`include "common.svh"
-`include "execute.svh"
+`include "common.sv"
+`include "execute.sv"
 
 module cpu(
     input wire clk,
-    output wire rw,
+    output wire rw, negative, overflow, brk, decimal, irqb, zero, carry,
     output wire[3:0] cycle,
     inout wire[7:0] data,
     output wire[7:0] sdata, acc, x, y, sp, op, tmp,
@@ -11,7 +11,7 @@ module cpu(
 );
     state_t state;
     assign {
-        rw,
+        rw, negative, overflow, brk, decimal, irqb, zero, carry,
         cycle,
         sdata, acc, x, y, sp, op, tmp,
         addr, pc

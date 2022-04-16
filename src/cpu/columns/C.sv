@@ -1,4 +1,4 @@
-`include "../common.svh"
+`include "../common.sv"
 `column(C)
 
 4'h0: begin end

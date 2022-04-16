@@ -1,7 +1,5 @@
-`include "../common.svh"
-`include "../modes.svh"
-`include "../instructions.svh"
-`column(0)
+`include "../common.sv"
+`column(E)
 
 4'h0: begin end
 4'h1: begin end

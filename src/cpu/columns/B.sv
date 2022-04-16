@@ -1,5 +1,5 @@
-`include "../common.svh"
-`column(9)
+`include "../common.sv"
+`column(B)
 
 4'h0: begin end
 4'h1: begin end

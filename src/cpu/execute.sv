@@ -1,8 +1,8 @@
 `ifndef EXECUTE_H
 `define EXECUTE_H
 
-`include "common.svh"
-`include "columns.svh"
+`include "common.sv"
+`include "columns.sv"
 
 function void execute(inout state_t state);
     `at(0) begin
