@@ -1,4 +1,4 @@
-VL := sh ../../verilator.sh
+VL := verilator # sh ../../verilator.sh
 
 test: obj_dir/Vcpu
 	./obj_dir/Vcpu
