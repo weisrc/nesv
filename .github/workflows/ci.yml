@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo apt-get install ccache
+      - run: sudo apt-get install ccache verilator
       - run: make -C src/cpu
       - if: contains(github.ref, 'main')
         env:

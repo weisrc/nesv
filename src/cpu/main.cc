@@ -4,7 +4,7 @@
 #include <verilated.h>
 #include <verilated_vcd_c.h>
 #include "Vcpu.h"
-#include "Vcpu___024root.h"
+#include "Vcpu___024unit.h"
 
 const vluint64_t MAX_TIME = 50;
 
