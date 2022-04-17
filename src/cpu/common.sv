@@ -15,9 +15,6 @@ typedef struct packed {
 `define action(NAME) function void ``NAME``(inout state_t state, input logic [3:0] cycle);
 `define endaction endfunction
 
-`define column(CID) function void column_``CID``(inout state_t state); case (state.op[7:4])
-`define endcolumn endcase endfunction
-
 function void done(inout state_t state, input logic [3:0] cycles, input logic [15:0] size);
     `at(cycles - 1) begin 
         state.pc += size;

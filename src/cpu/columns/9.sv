@@ -1,5 +1,7 @@
 `include "../common.sv"
-`column(9)
+`include "../actions.sv"
+
+function void column_9(inout state_t state); case (state.op[7:4])
 
 4'h0: begin end
 4'h1: begin end
@@ -18,4 +20,4 @@
 4'hE: begin end
 4'hF: begin end
 
-`endcolumn
+endcase endfunction
