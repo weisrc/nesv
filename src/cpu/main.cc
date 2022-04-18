@@ -13,15 +13,16 @@ int main()
     vluint64_t time = 0;
     Vcpu *cpu = new Vcpu;
 
-    SData rom[] = {
+    SData ram[] = {
         0x01, 0x05};
 
     while (time++ < MAX_TIME)
     {
         if (cpu->rw == 0)
-        {
-            cpu->data = rom[cpu->addr];
-        }
+            cpu->data = ram[cpu->addr];
+        else
+            ram[cpu->addr] = cpu->data;
+            
         cpu->clk ^= 1;
         cpu->eval();
         if (cpu->clk)
