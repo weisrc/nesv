@@ -3,27 +3,27 @@
 `ifndef BITWISE_H
 `define BITWISE_H
 
-`action(AND)
-    `rel(0) state.acc &= state.data;
-`endaction
+function void AND(`action_args);
+  if (`rel + 0) state.acc &= state.data;
+endfunction
 
-`action(ASL_ACC)
-    `rel(0) {state.carry, state.acc} = {state.acc, 1'b0};
-`endaction
+function void ASL_ACC(`action_args);
+  if (`rel + 0) {state.carry, state.acc} = {state.acc, 1'b0};
+endfunction
 
-`action(ASL)
-    `rel(0) begin
-        {state.carry, state.data} = {state.data, 1'b0};
-        state.rw = 1;
-    end
-`endaction
+function void ASL(`action_args);
+  if (`rel + 0) begin
+    {state.carry, state.data} = {state.data, 1'b0};
+    state.rw = 1;
+  end
+endfunction
 
-`action(ORA)
-    `rel(0) state.acc = state.acc | state.data;
-`endaction
+function void ORA(`action_args);
+  if (`rel + 0) state.acc = state.acc | state.data;
+endfunction
 
-`action(EOR)
-    `rel(0) state.acc = state.acc ^ state.data;
-`endaction
+function void EOR(`action_args);
+  if (`rel + 0) state.acc = state.acc ^ state.data;
+endfunction
 
 `endif

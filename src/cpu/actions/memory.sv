@@ -3,37 +3,37 @@
 `ifndef MEMORY_H
 `define MEMORY_H
 
-`action(STA)
-    `rel(0) state.acc = state.data;
-`endaction
+function void STA(`action_args);
+  if (`rel + 0) state.acc = state.data;
+endfunction
 
-`action(STX)
-    `rel(0) state.x = state.data;
-`endaction
+function void STX(`action_args);
+  if (`rel + 0) state.x = state.data;
+endfunction
 
-`action(STY)
-    `rel(0) state.y = state.data;
-`endaction
+function void STY(`action_args);
+  if (`rel + 0) state.y = state.data;
+endfunction
 
-`action(LDA)
-    `rel(0) begin 
-        state.data = state.acc;
-        state.rw = 1;
-    end
-`endaction
+function void LDA(`action_args);
+  if (`rel + 0) begin
+    state.data = state.acc;
+    state.rw   = 1;
+  end
+endfunction
 
-`action(LDX)
-    `rel(0) begin 
-        state.data = state.x;
-        state.rw = 1;
-    end
-`endaction
+function void LDX(`action_args);
+  if (`rel + 0) begin
+    state.data = state.x;
+    state.rw   = 1;
+  end
+endfunction
 
-`action(LDY)
-    `rel(0) begin 
-        state.data = state.y;
-        state.rw = 1;
-    end
-`endaction
+function void LDY(`action_args);
+  if (`rel + 0) begin
+    state.data = state.y;
+    state.rw   = 1;
+  end
+endfunction
 
 `endif

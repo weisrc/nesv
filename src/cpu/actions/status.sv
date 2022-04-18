@@ -3,32 +3,41 @@
 `ifndef STATUS_H
 `define STATUS_H
 
-`action(CMP)
-    `rel(0) {state.negative, state.zero, state.carry} = {state.acc[7], state.acc == state.data, state.acc > state.data};
-`endaction
+function void CMP(`action_args);
+  if (`rel + 0)
+    {state.negative, state.zero, state.carry} = {
+      state.acc[7], state.acc == state.data, state.acc > state.data
+    };
+endfunction
 
-`action(CPX)
-    `rel(0) {state.negative, state.zero, state.carry} = {state.x[7], state.x == state.data, state.x > state.data};
-`endaction
+function void CPX(`action_args);
+  if (`rel + 0)
+    {state.negative, state.zero, state.carry} = {
+      state.x[7], state.x == state.data, state.x > state.data
+    };
+endfunction
 
-`action(CPY)
-    `rel(0) {state.negative, state.zero, state.carry} = {state.y[7], state.y == state.data, state.y > state.data};
-`endaction
+function void CPY(`action_args);
+  if (`rel + 0)
+    {state.negative, state.zero, state.carry} = {
+      state.y[7], state.y == state.data, state.y > state.data
+    };
+endfunction
 
-`action(CLC)
-    `rel(0) state.carry = 0;
-`endaction
+function void CLC(`action_args);
+  if (`rel + 0) state.carry = 0;
+endfunction
 
-`action(CLD)
-    `rel(0) state.decimal = 0;
-`endaction
+function void CLD(`action_args);
+  if (`rel + 0) state.decimal = 0;
+endfunction
 
-`action(CLI)
-    `rel(0) state.irqb = 0;
-`endaction
+function void CLI(`action_args);
+  if (`rel + 0) state.irqb = 0;
+endfunction
 
-`action(CLV)
-    `rel(0) state.overflow = 0;
-`endaction
+function void CLV(`action_args);
+  if (`rel + 0) state.overflow = 0;
+endfunction
 
 `endif

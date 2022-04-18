@@ -3,50 +3,50 @@
 `ifndef ARITHMETIC_H
 `define ARITHMETIC_H
 
-`action(ADC)
-    `rel(0) {state.carry, state.acc} += state.data + {7'b0, state.carry};
-`endaction
+function void ADC(`action_args);
+  if (`rel + 0) {state.carry, state.acc} += state.data + {7'b0, state.carry};
+endfunction
 
-`action(DEC)
-    `rel(0) begin
-        state.data--;
-        state.rw = 1;
-    end
-`endaction
+function void DEC(`action_args);
+  if (`rel + 0) begin
+    state.data--;
+    state.rw = 1;
+  end
+endfunction
 
-`action(DEC_ACC)
-    `rel(0) state.acc--;
-`endaction
+function void DEC_ACC(`action_args);
+  if (`rel + 0) state.acc--;
+endfunction
 
-`action(DEX)
-    `rel(0) state.x--;
-`endaction
+function void DEX(`action_args);
+  if (`rel + 0) state.x--;
+endfunction
 
-`action(DEY)
-    `rel(0) state.y--;
-`endaction
+function void DEY(`action_args);
+  if (`rel + 0) state.y--;
+endfunction
 
-`action(INC)
-    `rel(0) begin
-        state.data++;
-        state.rw = 1;
-    end
-`endaction
+function void INC(`action_args);
+  if (`rel + 0) begin
+    state.data++;
+    state.rw = 1;
+  end
+endfunction
 
-`action(INC_ACC)
-    `rel(0) state.acc++;
-`endaction
+function void INC_ACC(`action_args);
+  if (`rel + 0) state.acc++;
+endfunction
 
-`action(INX)
-    `rel(0) state.x++;
-`endaction
+function void INX(`action_args);
+  if (`rel + 0) state.x++;
+endfunction
 
-`action(INY)
-    `rel(0) state.y++;
-`endaction
+function void INY(`action_args);
+  if (`rel + 0) state.y++;
+endfunction
 
-`action(SBC)
-    `rel(0) {state.carry, state.acc} -= state.data + {7'b0, state.carry};
-`endaction
+function void SBC(`action_args);
+  if (`rel + 0) {state.carry, state.acc} -= state.data + {7'b0, state.carry};
+endfunction
 
 `endif
