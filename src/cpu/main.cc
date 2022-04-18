@@ -25,6 +25,6 @@ int main()
         cpu->clk ^= 1;
         cpu->eval();
         if (cpu->clk)
-            printf("@%d cycle=%d data=%d x=%d y=%d acc=%d\n", cpu->addr, cpu->cycle, cpu->data, cpu->x, cpu->y, cpu->acc);
+            printf("@%d op=%d cycle=%d data=%d x=%d y=%d acc=%d\n", cpu->addr, cpu->op, cpu->cycle, cpu->data, cpu->x, cpu->y, cpu->acc);
     }
 }
