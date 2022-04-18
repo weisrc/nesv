@@ -6,6 +6,7 @@ module cpu (
     output wire        rw,
     negative,
     overflow,
+    unused,
     brk,
     decimal,
     irqb,
@@ -24,7 +25,7 @@ module cpu (
     pc
 );
   state_t state;
-  assign {rw, negative, overflow, brk, decimal, irqb, zero, carry, cycle, sdata, acc, x, y, sp, op,
+  assign {rw, negative, overflow, unused, brk, decimal, irqb, zero, carry, cycle, sdata, acc, x, y, sp, op,
           tmp, addr, pc} = state;
 
   assign data = rw ? 8'bz : state.data;

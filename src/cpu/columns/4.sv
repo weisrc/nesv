@@ -2,40 +2,27 @@
 `include "../actions.sv"
 
 function void column_4(inout state_t state);
+
+  if (state.op[4]) begin
+    ZP_X(state, 1);
+    END(state, 4, 2);
+  end else begin
+    ZP(state, 1);
+    END(state, 3, 2);
+  end
+
   case (state.op[7:4])
 
-    'h0: begin
+    'h0: TSB(state, 2);
+    'h1: TRB(state, 2);
+    'h2, 'h3: BIT(state, 2);
+    'h4, 'h5: begin
     end
-    'h1: begin
-    end
-    'h2: begin
-    end
-    'h3: begin
-    end
-    'h4: begin
-    end
-    'h5: begin
-    end
-    'h6: begin
-    end
-    'h7: begin
-    end
-    'h8: begin
-    end
-    'h9: begin
-    end
-    'hA: begin
-    end
-    'hB: begin
-    end
-    'hC: begin
-    end
-    'hD: begin
-    end
-    'hE: begin
-    end
-    'hF: begin
-    end
+    'h6, 'h7: STZ(state, 2);
+    'h8, 'h9: STY(state, 2);
+    'hA, 'hB: LDY(state, 2);
+    'hC, 'hD: CPY(state, 2);
+    'hE, 'hF: CPX(state, 2);
 
   endcase
 endfunction
