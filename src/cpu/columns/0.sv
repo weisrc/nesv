@@ -3,63 +3,63 @@
 
 function void column_0(inout state_t state);
   case (state.op[7:4])
-    4'h0: begin
+    'h0: begin
       // TODO: break
     end
-    4'h1: begin
+    'h1: begin
       if (~state.negative) REL(state, 1);
       END(state, 2, 2);
     end
-    4'h2: begin
+    'h2: begin
       // TODO: jump to subroutine
     end
-    4'h3: begin
+    'h3: begin
       if (state.negative) REL(state, 1);
       END(state, 2, 2);
     end
-    4'h4: begin
+    'h4: begin
       // TODO: return from interrupt
     end
-    4'h5: begin
+    'h5: begin
       if (~state.overflow) REL(state, 1);
       END(state, 2, 2);
     end
-    4'h6: begin
+    'h6: begin
       // TODO: return from subroutine
     end
-    4'h7: begin
+    'h7: begin
       if (state.overflow) REL(state, 1);
       END(state, 2, 2);
     end
-    4'h8: begin
+    'h8: begin
       REL(state, 1);
       END(state, 2, 2);
     end
-    4'h9: begin
+    'h9: begin
       if (~state.carry) REL(state, 1);
       END(state, 2, 2);
     end
-    4'hA: begin
+    'hA: begin
       LDY(state, 1);
       END(state, 2, 2);
     end
-    4'hB: begin
+    'hB: begin
       if (state.carry) REL(state, 1);
       END(state, 2, 2);
     end
-    4'hC: begin
+    'hC: begin
       CPY(state, 1);
       END(state, 2, 2);
     end
-    4'hD: begin
+    'hD: begin
       if (~state.zero) REL(state, 1);
       END(state, 2, 2);
     end
-    4'hE: begin
+    'hE: begin
       CPX(state, 1);
       END(state, 2, 2);
     end
-    4'hF: begin
+    'hF: begin
       if (state.zero) REL(state, 1);
       END(state, 2, 2);
     end
