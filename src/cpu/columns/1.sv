@@ -18,7 +18,7 @@ function void column_1(inout state_t state);
     'h6: ADC(state, 4);
     'h7: ADC(state, 3);
     'h8: STA(state, 4);
-    'h9: ADC(state, 3);
+    'h9: STA(state, 3);
     'hA: LDA(state, 4);
     'hB: LDA(state, 3);
     'hC: CMP(state, 4);
