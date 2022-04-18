@@ -2,40 +2,25 @@
 `include "../actions.sv"
 
 function void column_D(inout state_t state);
-  case (state.op[7:4])
 
-    'h0: begin
-    end
-    'h1: begin
-    end
-    'h2: begin
-    end
-    'h3: begin
-    end
-    'h4: begin
-    end
-    'h5: begin
-    end
-    'h6: begin
-    end
-    'h7: begin
-    end
-    'h8: begin
-    end
-    'h9: begin
-    end
-    'hA: begin
-    end
-    'hB: begin
-    end
-    'hC: begin
-    end
-    'hD: begin
-    end
-    'hE: begin
-    end
-    'hF: begin
-    end
+  if (state.op[4]) begin
+    PTR_Y(state, 1);
+    END(state, 3, 4);
+  end else begin
+    X_PTR(state, 1);
+    END(state, 3, 4);
+  end
 
+
+  case (state.op[7:5])
+    0: ORA(state, 3);
+    1: AND(state, 3);
+    2: EOR(state, 3);
+    3: ADC(state, 3);
+    4: STA(state, 3);
+    5: LDA(state, 3);
+    6: CMP(state, 3);
+    7: SBC(state, 3);
   endcase
+
 endfunction
