@@ -29,7 +29,7 @@ module cpu (
 
   assign data = rw ? 8'bz : state.data;
 
-  always @(negedge clk) begin
+  always @(posedge clk) begin
     if (~rw) state.data = data;
     execute(state);
   end
