@@ -8,9 +8,10 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: sudo apt-get install verilator
-      - run: make -C src/cpu
+      - uses: actions/checkout@v2.4.0
+      - uses: cachix/install-nix-action@v15
+      - run: |
+          nix-shell --run make:cpu
       - if: contains(github.ref, 'main')
         env:
           MESSAGE: ${{ github.event.head_commit.message }}

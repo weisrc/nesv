@@ -18,28 +18,28 @@ endfunction
 function void STA(`action_args);
   if (`rel + 0) begin
     state.data = state.acc;
-    state.rw = 1;
+    state.rw   = 1;
   end
 endfunction
 
 function void STX(`action_args);
   if (`rel + 0) begin
     state.data = state.x;
-    state.rw = 1;
+    state.rw   = 1;
   end
 endfunction
 
 function void STY(`action_args);
   if (`rel + 0) begin
     state.data = state.y;
-    state.rw = 1;
+    state.rw   = 1;
   end
 endfunction
 
 function void STZ(`action_args);
   if (`rel + 0) begin
     state.data = 0;
-    state.rw = 1;
+    state.rw   = 1;
   end
 endfunction
 

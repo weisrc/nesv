@@ -32,7 +32,7 @@ endfunction
 function void ROL(`action_args);
   if (`rel + 0) begin
     state.data = {state.data[6:0], state.data[7]};
-    state.rw = 1;
+    state.rw   = 1;
   end
 endfunction
 
@@ -43,7 +43,7 @@ endfunction
 function void ROR(`action_args);
   if (`rel + 0) begin
     state.data = {state.data[0], state.data[7:1]};
-    state.rw = 1;
+    state.rw   = 1;
   end
 endfunction
 

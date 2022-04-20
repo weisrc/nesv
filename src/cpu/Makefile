@@ -9,7 +9,7 @@ obj_dir/Vcpu: obj_dir
 obj_dir:
 	$(VL) --cc cpu.sv --exe main.cc -O3 --relative-includes
 
-preprocess:
+bundle:
 	$(VL) -E -P --relative-includes cpu.sv >> obj_dir/cpu.sv
 
 .PHONY: obj_dir

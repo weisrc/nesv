@@ -7,7 +7,7 @@
 
 function void push(state_t state, logic [7:0] data);
   state.addr = {8'b1, state.sp};
-  state.rw = 1;
+  state.rw   = 1;
   state.sp--;
   state.data = data;
 endfunction
