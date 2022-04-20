@@ -6,7 +6,6 @@ pkgs.mkShell {
       verilator
       bash
       emscripten
-      clang
     ];
     shellHook = ''
     cd ${builtins.toString ./.}
