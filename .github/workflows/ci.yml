@@ -13,7 +13,7 @@ jobs:
       - uses: cachix/install-nix-action@v15
       - uses: workflow/nix-shell-action@v3.0.2
       - run: |
-          sudo nix-shell --run make:cpu
+          nix-shell --run make:cpu
       - if: contains(github.ref, 'main')
         env:
           MESSAGE: ${{ github.event.head_commit.message }}
