@@ -4,11 +4,11 @@
 function void column_D(inout state_t state);
 
   if (state.op[4]) begin
-    PTR_Y(state, 1);
-    END(state, 3, 4);
+    PTR_Y(state);
+    END(state, 3);
   end else begin
-    X_PTR(state, 1);
-    END(state, 3, 4);
+    X_PTR(state);
+    END(state, 3);
   end
 
 

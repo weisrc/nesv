@@ -11,6 +11,5 @@
 `include "actions/stack.sv"
 `include "actions/compare.sv"
 `include "actions/transfer.sv"
-`include "actions/utils.sv"
 
 `endif

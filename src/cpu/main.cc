@@ -22,10 +22,13 @@ int main()
             cpu->data = ram[cpu->addr];
         else
             ram[cpu->addr] = cpu->data;
-            
+
         cpu->clk ^= 1;
         cpu->eval();
         if (cpu->clk)
-            printf("@%d op=%d cycle=%d data=%d x=%d y=%d acc=%d\n", cpu->addr, cpu->op, cpu->cycle, cpu->data, cpu->x, cpu->y, cpu->acc);
+        {
+            printf("%s @%d op=%d cycle=%d data=%d x=%d y=%d acc=%d\n",
+                   &cpu->mnemonic, cpu->addr, cpu->op, cpu->cycle, cpu->data, cpu->x, cpu->y, cpu->acc);
+        }
     }
 }

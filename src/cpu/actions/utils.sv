@@ -3,9 +3,8 @@
 `ifndef UTILS_H
 `define UTILS_H
 
-function void END(inout state_t state, input logic [3:0] duration, input logic [15:0] size);
+function void END(inout state_t state, input cycle_t duration);
   if (state.cycle == duration - 1) begin
-    state.pc += size;
     state.addr = state.pc;
     state.cycle = 0;
     state.rw = 0;

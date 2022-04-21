@@ -4,11 +4,11 @@
 function void column_E(inout state_t state);
 
   if (state.op[4]) begin
-    ABS_X(state, 1);
-    END(state, 6, 3);
+    ABS_X(state);
+    END(state, 6);
   end else begin
-    ABS(state, 1);
-    END(state, 7, 3);
+    ABS(state);
+    END(state, 7);
   end
 
   case (state.op[7:5])

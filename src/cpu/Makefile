@@ -7,9 +7,9 @@ obj_dir/Vcpu: obj_dir
 	make -C obj_dir -f Vcpu.mk
 
 obj_dir:
-	$(VL) --cc cpu.sv --exe main.cc -O3 --relative-includes
+	$(VL) -Wno-IGNOREDRETURN --cc cpu.sv --exe main.cc -O3 --relative-includes
 
 bundle:
-	$(VL) -E -P --relative-includes cpu.sv >> obj_dir/cpu.sv
+	$(VL) -Wno-IGNOREDRETURN -E -P --relative-includes cpu.sv >> obj_dir/cpu.sv
 
 .PHONY: obj_dir

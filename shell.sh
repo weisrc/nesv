@@ -11,3 +11,7 @@ make:cpu() {
 clean:cpu() {
   rm -rf src/cpu/obj_dir
 }
+
+bundle:cpu() {
+  make -C src/cpu bundle
+}

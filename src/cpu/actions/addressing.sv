@@ -3,16 +3,19 @@
 
 `include "../common.sv"
 
-function void ABS(`action_args);
+function cycle_t ABS(`action_args);
   if (`rel + 0) begin
+    state.pc += 3;
     state.tmp = state.data;
     state.addr++;
   end
   if (`rel + 1) state.addr = {state.data, state.tmp};
+  return at + 2;
 endfunction
 
-function void ABS_X_PTR(`action_args);
+function cycle_t ABS_X_PTR(`action_args);
   if (`rel + 0) begin
+    state.pc += 3;
     state.tmp = state.data;
     state.addr++;
   end
@@ -22,26 +25,32 @@ function void ABS_X_PTR(`action_args);
     state.addr++;
   end
   if (`rel + 3) state.pc = {state.tmp, state.data};
+  return at + 4;
 endfunction
 
-function void ABS_X(`action_args);
+function cycle_t ABS_X(`action_args);
   if (`rel + 0) begin
+    state.pc += 3;
     state.tmp = state.data;
     state.addr++;
   end
   if (`rel + 1) state.addr = {state.data, state.tmp} + {8'b0, state.x};
+  return at + 2;
 endfunction
 
-function void ABS_Y(`action_args);
+function cycle_t ABS_Y(`action_args);
   if (`rel + 0) begin
+    state.pc += 3;
     state.tmp = state.data;
     state.addr++;
   end
   if (`rel + 1) state.addr = {state.data, state.tmp} + {8'b0, state.y};
+  return at + 2;
 endfunction
 
-function void ABS_PTR(`action_args);
+function cycle_t ABS_PTR(`action_args);
   if (`rel + 0) begin
+    state.pc += 3;
     state.tmp = state.data;
     state.addr++;
   end
@@ -51,41 +60,58 @@ function void ABS_PTR(`action_args);
     state.addr++;
   end
   if (`rel + 3) state.pc = {state.tmp, state.data};
+  return at + 4;
 endfunction
 
-function void REL(`action_args);
-  if (`rel + 0) state.addr = state.pc + {8'b0, state.data};
-endfunction
-
-function void STACK(`action_args);
-  if (`rel + 0) state.addr = {8'b1, state.sp};
-endfunction
-
-function void X_PTR(`action_args);
-  if (`rel + 0) state.addr = {8'b0, state.data + state.x};
+function cycle_t X_PTR(`action_args);
+  if (`rel + 0) begin
+    state.pc += 2;
+    state.addr = {8'b0, state.data + state.x};
+  end
   if (`rel + 1) state.addr = {8'b0, state.data};
+  return at + 2;
 endfunction
 
-function void PTR(`action_args);
-  if (`rel + 0) state.addr = {8'b0, state.data};
+function cycle_t PTR(`action_args);
+  if (`rel + 0) begin
+    state.pc += 2;
+    state.addr = {8'b0, state.data};
+  end
   if (`rel + 1) state.addr = {8'b0, state.data};
+  return at + 2;
 endfunction
 
-function void PTR_Y(`action_args);
-  if (`rel + 0) state.addr = {8'b0, state.data};
+function cycle_t PTR_Y(`action_args);
+  if (`rel + 0) begin
+    state.pc += 2;
+    state.addr = {8'b0, state.data};
+  end
   if (`rel + 1) state.addr = {8'b0, state.data + state.y};
+  return at + 2;
 endfunction
 
-function void ZP(`action_args);
-  if (`rel + 0) state.addr = {8'b0, state.data};
+function cycle_t ZP(`action_args);
+  if (`rel + 0) begin
+    state.pc += 2;
+    state.addr = {8'b0, state.data};
+  end
+  return at + 1;
 endfunction
 
-function void ZP_X(`action_args);
-  if (`rel + 0) state.addr = {8'b0, state.data + state.x};
+function cycle_t ZP_X(`action_args);
+  if (`rel + 0) begin
+    state.pc += 2;
+    state.addr = {8'b0, state.data + state.x};
+  end
+  return at + 1;
 endfunction
 
-function void ZP_Y(`action_args);
-  if (`rel + 0) state.addr = {8'b0, state.data + state.y};
+function cycle_t ZP_Y(`action_args);
+  if (`rel + 0) begin
+    state.pc += 2;
+    state.addr = {8'b0, state.data + state.y};
+  end
+  return at + 1;
 endfunction
 
 `endif

@@ -4,11 +4,11 @@
 function void column_6(inout state_t state);
 
   if (state.op[4]) begin
-    ZP_X(state, 1);
-    END(state, 6, 2);
+    ZP_X(state);
+    END(state, 6);
   end else begin
-    ZP(state, 1);
-    END(state, 5, 2);
+    ZP(state);
+    END(state, 5);
   end
 
   case (state.op[7:5])

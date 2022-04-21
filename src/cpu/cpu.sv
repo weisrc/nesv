@@ -22,15 +22,17 @@ module cpu (
     op,
     tmp,
     output wire [15:0] addr,
-    pc
+    pc,
+    output mnemonic_t mnemonic
 );
   state_t state;
-  assign {rw, negative, overflow, unused, brk, decimal, irqb, zero, carry, cycle, sdata, acc, x, y, sp, op,
-          tmp, addr, pc} = state;
+  assign {rw, negative, overflow, unused, brk, decimal, irqb, zero, carry, cycle, sdata, acc, x, y,
+          sp, op, tmp, addr, pc, mnemonic} = state;
 
   assign data = rw ? 8'bz : state.data;
 
   always @(posedge clk) begin
+    state.mnemonic = "asd";
     if (~rw) state.data = data;
     execute(state);
   end
