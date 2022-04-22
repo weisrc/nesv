@@ -3,13 +3,7 @@
 
 function void column_E(inout state_t state);
 
-  if (state.op[4]) begin
-    ABS_X(state);
-    END(state, 6);
-  end else begin
-    ABS(state);
-    END(state, 7);
-  end
+  cycle_t at = state.op[4] ? ABS_X(state) : ABS(state);
 
   case (state.op[7:5])
     0: ASL(state, 3);

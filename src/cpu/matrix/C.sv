@@ -4,58 +4,23 @@
 function void column_C(inout state_t state);
   case (state.op[7:4])
 
-    'h0: begin
-      TSB(state, ABS(state));
-      END(state, 4);
-    end
-    'h1: begin
-      TRB(state, ABS(state));
-      END(state, 4);
-    end
-    'h2: begin
-      BIT(state, ABS(state));
-      END(state, 4);
-    end
-    'h3: begin
-      BIT(state, ABS(state));
-      END(state, 4);
-    end
+    'h0: TSB(state, ABS(state));
+    'h1: TRB(state, ABS(state));
+    'h2: BIT(state, ABS(state));
+    'h3: BIT(state, ABS(state));
     'h4: JMP(state, ABS(state));
     'h5: begin
-
     end
-    'h6: begin
-      JMP(state, ABS_PTR(state));
-    end
-    'h7: begin
-      JMP(state, ABS_X_PTR(state));
-    end
-    'h8: begin
-      STY(state, ABS(state));
-      END(state, 4);
-    end
-    'h9: begin
-      STZ(state, ABS(state));
-      END(state, 5);
-    end
-    'hA: begin
-      LDY(state, ABS(state));
-      END(state, 4);
-    end
-    'hB: begin
-      LDY(state, ABS_X(state));
-      END(state, 4);
-    end
-    'hC: begin
-      CPY(state, ABS(state));
-      END(state, 4);
-    end
+    'h6: JMP(state, ABS_PTR(state));
+    'h7: JMP(state, ABS_X_PTR(state));
+    'h8: STY(state, ABS(state));
+    'h9: STZ(state, ABS(state));
+    'hA: LDY(state, ABS(state));
+    'hB: LDY(state, ABS_X(state));
+    'hC: CPY(state, ABS(state));
     'hD: begin
     end
-    'hE: begin
-      CPX(state, ABS(state));
-      END(state, 4);
-    end
+    'hE: CPX(state, ABS(state));
     'hF: begin
     end
 

@@ -3,24 +3,17 @@
 
 function void column_D(inout state_t state);
 
-  if (state.op[4]) begin
-    PTR_Y(state);
-    END(state, 3);
-  end else begin
-    X_PTR(state);
-    END(state, 3);
-  end
-
+  cycle_t at = state.op[4] ? PTR_Y(state) : X_PTR(state);
 
   case (state.op[7:5])
-    0: ORA(state, 3);
-    1: AND(state, 3);
-    2: EOR(state, 3);
-    3: ADC(state, 3);
-    4: STA(state, 3);
-    5: LDA(state, 3);
-    6: CMP(state, 3);
-    7: SBC(state, 3);
+    0: ORA(state, at);
+    1: AND(state, at);
+    2: EOR(state, at);
+    3: ADC(state, at);
+    4: STA(state, at);
+    5: LDA(state, at);
+    6: CMP(state, at);
+    7: SBC(state, at);
   endcase
 
 endfunction

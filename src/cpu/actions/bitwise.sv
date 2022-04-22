@@ -6,17 +6,17 @@
 
 function void AND(`action_args);
   if (`rel + 0) state.acc &= state.data;
-  END(state, at + 1);
+  if (`rel + 1) END(state);
 endfunction
 
 function void ORA(`action_args);
   if (`rel + 0) state.acc = state.acc | state.data;
-  END(state, at + 1);
+  if (`rel + 1) END(state);
 endfunction
 
 function void EOR(`action_args);
   if (`rel + 0) state.acc = state.acc ^ state.data;
-  END(state, at + 1);
+  if (`rel + 1) END(state);
 endfunction
 
 function void TSB(`action_args);
@@ -24,7 +24,7 @@ function void TSB(`action_args);
     state.data = state.data | state.acc;
     state.rw = 1;
   end
-  END(state, at + 1);
+  if (`rel + 1) END(state);
 endfunction
 
 function void TRB(`action_args);
@@ -32,7 +32,7 @@ function void TRB(`action_args);
     state.data = state.data & ~state.acc;
     state.rw = 1;
   end
-  END(state, at + 1);
+  if (`rel + 1) END(state);
 endfunction
 
 function void BIT(`action_args);
@@ -41,7 +41,7 @@ function void BIT(`action_args);
     state.negative = state.data[7];
     state.overflow = state.data[6];
   end
-  END(state, at + 1);
+  if (`rel + 1) END(state);
 endfunction
 
 `endif

@@ -6,57 +6,27 @@ function void column_0(inout state_t state);
     'h0: begin
       // TODO: break
     end
-    'h1: begin
-      if (~state.negative) REL(state);
-      END(state, 2);
-    end
+    'h1: B(~state.negative, state);
     'h2: begin
       // TODO: jump to subroutine
     end
-    'h3: begin
-      if (state.negative) REL(state);
-      END(state, 2);
-    end
+    'h3: B(state.negative, state);
     'h4: begin
       // TODO: return from interrupt
     end
-    'h5: begin
-      if (~state.overflow) REL(state);
-      END(state, 2);
-    end
+    'h5: B(~state.overflow, state);
     'h6: begin
       // TODO: return from subroutine
     end
-    'h7: begin
-      if (state.overflow) REL(state);
-      END(state, 2);
-    end
-    'h8: REL(state);
-    'h9: begin
-      if (~state.carry) REL(state);
-      END(state, 2);
-    end
-    'hA: begin
-      LDY(state);
-      END(state, 2);
-    end
-    'hB: begin
-      if (state.carry) REL(state);
-      END(state, 2);
-    end
-    'hC: begin
-      CPY(state);
-      END(state, 2);
-    end
-    'hD: begin
-      if (~state.zero) REL(state);
-      END(state, 2);
-    end
+    'h7: B(state.overflow, state);
+    'h8: B(1, state);
+    'h9: B(~state.carry, state);
+    'hA: LDY(state);
+    'hB: B(state.carry, state);
+    'hC: CPY(state);
+    'hD: B(~state.zero, state);
     'hE: CPX(state);
-    'hF: begin
-      if (state.zero) REL(state);
-      END(state, 2);
-    end
+    'hF: B(state.zero, state);
 
   endcase
 endfunction

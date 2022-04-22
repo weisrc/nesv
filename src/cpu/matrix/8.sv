@@ -3,71 +3,21 @@
 
 function void column_8(inout state_t state);
   case (state.op[7:4])
-
-    'h0: begin
-      PHP(state);
-      END(state, 3);
-    end
-    'h1: begin
-      CLC(state);
-      END(state, 2);
-    end
-    'h2: begin
-      PLP(state);
-      END(state, 4);
-    end
-    'h3: begin
-      SEC(state);
-      END(state, 2);
-    end
-    'h4: begin
-      PHA(state);
-      END(state, 3);
-    end
-    'h5: begin
-      CLI(state);
-      END(state, 2);
-    end
-    'h6: begin
-      PLA(state);
-      END(state, 4);
-    end
-    'h7: begin
-      SEI(state);
-      END(state, 2);
-    end
-    'h8: begin
-      DEY(state);
-      END(state, 2);
-    end
-    'h9: begin
-      TYA(state);
-      END(state, 2);
-    end
-    'hA: begin
-      TAY(state);
-      END(state, 2);
-    end
-    'hB: begin
-      CLV(state);
-      END(state, 2);
-    end
-    'hC: begin
-      INY(state);
-      END(state, 2);
-    end
-    'hD: begin
-      CLD(state);
-      END(state, 2);
-    end
-    'hE: begin
-      INX(state);
-      END(state, 2);
-    end
-    'hF: begin
-      SED(state);
-      END(state, 2);
-    end
-
+    'h0: PHP(state);
+    'h1: CLC(state);
+    'h2: PLP(state);
+    'h3: SEC(state);
+    'h4: PHA(state);
+    'h5: CLI(state);
+    'h6: PLA(state);
+    'h7: SEI(state);
+    'h8: DEY(state);
+    'h9: TYA(state);
+    'hA: TAY(state);
+    'hB: CLV(state);
+    'hC: INY(state);
+    'hD: CLD(state);
+    'hE: INX(state);
+    'hF: SED(state);
   endcase
 endfunction
