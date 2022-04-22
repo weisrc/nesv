@@ -65,6 +65,7 @@ endfunction
 
 function cycle_t X_PTR(`action_args);
   if (`rel + 0) begin
+    $display("adding to pc (x pointer)");
     state.pc += 2;
     state.addr = {8'b0, state.data + state.x};
   end
@@ -83,6 +84,7 @@ endfunction
 
 function cycle_t PTR_Y(`action_args);
   if (`rel + 0) begin
+    $display("adding to pc (pointer y)");
     state.pc += 2;
     state.addr = {8'b0, state.data};
   end

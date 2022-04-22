@@ -5,7 +5,7 @@ typedef logic [3:0] cycle_t;
 typedef logic [3*8:1] mnemonic_t;
 
 typedef struct packed {
-  logic rw, negative, overflow, brk, unused, decimal, irqb, zero, carry;
+  logic rw, sync, negative, overflow, brk, unused, decimal, irqb, zero, carry;
   cycle_t cycle;
   logic [7:0] data, acc, x, y, sp, op, tmp;
   logic [15:0] addr, pc;

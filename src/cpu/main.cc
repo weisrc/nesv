@@ -16,6 +16,8 @@ int main()
     SData ram[] = {
         0x01, 0x05};
 
+    cpu->ready = 1;
+
     while (time++ < MAX_TIME)
     {
         if (cpu->rw == 0)
@@ -27,8 +29,8 @@ int main()
         cpu->eval();
         if (cpu->clk)
         {
-            printf("%s @%d op=%d cycle=%d data=%d x=%d y=%d acc=%d\n",
-                   &cpu->mnemonic, cpu->addr, cpu->op, cpu->cycle, cpu->data, cpu->x, cpu->y, cpu->acc);
+            printf("@%d pc=%d op=%d cycle=%d data=%d x=%d y=%d acc=%d\n",
+                   cpu->addr, cpu->pc, cpu->op, cpu->cycle, cpu->data, cpu->x, cpu->y, cpu->acc);
         }
     }
 }

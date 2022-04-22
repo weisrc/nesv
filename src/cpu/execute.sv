@@ -5,11 +5,11 @@
 `include "matrix.sv"
 
 function void execute(inout state_t state);
-  if (state.cycle == 0) begin
+  if (state.sync) begin
     state.op = state.data;
     state.addr++;
-    state.cycle++;
     state.rw = 0;
+    state.sync = 0;
   end
   case (state.op[3:0])
     'h0: column_0(state);
@@ -29,7 +29,7 @@ function void execute(inout state_t state);
     'hE: column_E(state);
     'hF: column_F(state);
   endcase
-  if (state.cycle != 0) state.cycle++;
+  if (~state.sync) state.cycle++;
 endfunction
 
 `endif

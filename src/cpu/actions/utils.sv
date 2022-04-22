@@ -6,6 +6,7 @@
 function void END(inout state_t state);
   state.addr = state.pc;
   state.cycle = 0;
+  state.sync = 1;
   state.rw = 0;
 endfunction
 

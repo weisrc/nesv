@@ -3,7 +3,12 @@
 
 function void column_1(inout state_t state);
 
-  cycle_t at = state.op[4] ? PTR_Y(state) : X_PTR(state);
+  cycle_t at;
+  if (state.op[4]) begin
+    at = PTR_Y(state);
+  end else begin
+    at = X_PTR(state);
+  end
 
   case (state.op[7:5])
     0: ORA(state, at);
