@@ -8,6 +8,7 @@ function void column_1(inout state_t state);
     at = PTR_Y(state);
   end else begin
     at = X_PTR(state);
+    $display("difference");
   end
 
   case (state.op[7:5])
