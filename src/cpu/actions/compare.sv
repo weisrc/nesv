@@ -9,7 +9,7 @@ function void CMP(`action_args);
     {state.negative, state.zero, state.carry} = {
       state.acc[7], state.acc == state.data, state.acc > state.data
     };
-  if (`rel + 1) END(state);
+  if (`rel + 1) done(state);
 endfunction
 
 function void CPX(`action_args);
@@ -17,7 +17,7 @@ function void CPX(`action_args);
     {state.negative, state.zero, state.carry} = {
       state.x[7], state.x == state.data, state.x > state.data
     };
-  if (`rel + 1) END(state);
+  if (`rel + 1) done(state);
 endfunction
 
 function void CPY(`action_args);
@@ -25,7 +25,7 @@ function void CPY(`action_args);
     {state.negative, state.zero, state.carry} = {
       state.y[7], state.y == state.data, state.y > state.data
     };
-  if (`rel + 1) END(state);
+  if (`rel + 1) done(state);
 endfunction
 
 `endif

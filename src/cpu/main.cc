@@ -13,8 +13,8 @@ int main()
     vluint64_t time = 0;
     Vcpu *cpu = new Vcpu;
 
-    SData ram[] = {
-        0x01, 0x05};
+    SData ram[65536] = {
+        0x01, 0x01, 0x01};
 
     cpu->ready = 1;
 
@@ -29,8 +29,16 @@ int main()
         cpu->eval();
         if (cpu->clk)
         {
-            printf("@%d pc=%d op=%d cycle=%d data=%d x=%d y=%d acc=%d\n",
-                   cpu->addr, cpu->pc, cpu->op, cpu->cycle, cpu->data, cpu->x, cpu->y, cpu->acc);
+            switch (cpu->err)
+            {
+            case 0:
+                printf("@%X pc=%X op=%X cycle=%X data=%X x=%X y=%X acc=%X\n",
+                       cpu->addr, cpu->pc, cpu->op, cpu->cycle, cpu->data, cpu->x, cpu->y, cpu->acc);
+                break;
+            case 1:
+                printf("error: illegal instruction %X\n", cpu->op);
+                return 0;
+            }
         }
     }
 }

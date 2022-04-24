@@ -2,9 +2,9 @@
 `include "execute.sv"
 
 module cpu (
-    input  wire              clk,
+    input  logic      clk,
     ready,
-    output wire              rw,
+    output logic      rw,
     sync,
     negative,
     overflow,
@@ -14,22 +14,23 @@ module cpu (
     irqb,
     zero,
     carry,
-    output wire       [ 3:0] cycle,
-    inout  wire       [ 7:0] data,
-    output wire       [ 7:0] sdata,
+    output cycle_t    cycle,
+    inout  byte       data,
+    output byte       sdata,
     acc,
     x,
     y,
     sp,
     op,
     tmp,
-    output wire       [15:0] addr,
+    err,
+    output shortint   addr,
     pc,
-    output mnemonic_t        mnemonic
+    output mnemonic_t mnemonic
 );
   state_t state;
   assign {rw, sync, negative, overflow, unused, brk, decimal, irqb, zero, carry, cycle, sdata, acc,
-          x, y, sp, op, tmp, addr, pc, mnemonic} = state;
+          x, y, sp, op, tmp, err, addr, pc, mnemonic} = state;
 
   assign data = rw ? 8'bz : state.data;
 

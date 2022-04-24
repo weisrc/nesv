@@ -1,9 +1,16 @@
 `include "../common.sv"
 `include "../actions.sv"
 
-function void column_6(inout state_t state);
+function void column_6E(inout state_t state);
 
-  cycle_t at = state.op[4] ? ZP_X(state) : ZP(state);
+  cycle_t at;
+
+  case (state.op[4:0])
+    'h06: at = ZP(state);
+    'h16: at = ZP_X(state);
+    'h0E: at = ABS(state);
+    'h1E: at = ABS_X(state);
+  endcase
 
   case (state.op[7:5])
     0: ASL(state, at);

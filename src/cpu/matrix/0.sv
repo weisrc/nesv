@@ -3,9 +3,7 @@
 
 function void column_0(inout state_t state);
   case (state.op[7:4])
-    'h0: begin
-      // TODO: break
-    end
+    'h0: BRK(state);
     'h1: B(~state.negative, state);
     'h2: begin
       // TODO: jump to subroutine
