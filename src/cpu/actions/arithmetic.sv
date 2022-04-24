@@ -12,7 +12,7 @@ endfunction
 function void DEC(`action_args);
   if (`rel + 0) begin
     state.data--;
-    state.rw = 1;
+    state.rw = 0;
   end
   if (`rel + 1) done(state);
 endfunction
@@ -35,7 +35,7 @@ endfunction
 function void INC(`action_args);
   if (`rel + 0) begin
     state.data++;
-    state.rw = 1;
+    state.rw = 0;
   end
   if (`rel + 1) done(state);
 endfunction

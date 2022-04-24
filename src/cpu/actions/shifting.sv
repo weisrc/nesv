@@ -12,7 +12,7 @@ endfunction
 function void ASL(`action_args);
   if (`rel + 0) begin
     {state.carry, state.data} = {state.data, 1'b0};
-    state.rw = 1;
+    state.rw = 0;
   end
   if (`rel + 1) done(state);
 endfunction
@@ -25,7 +25,7 @@ endfunction
 function void LSR(`action_args);
   if (`rel + 0) begin
     {state.data, state.carry} = {1'b0, state.data};
-    state.rw = 1;
+    state.rw = 0;
   end
   if (`rel + 1) done(state);
 endfunction
@@ -38,7 +38,7 @@ endfunction
 function void ROL(`action_args);
   if (`rel + 0) begin
     state.data = {state.data[6:0], state.data[7]};
-    state.rw = 1;
+    state.rw = 0;
   end
   if (`rel + 1) done(state);
 endfunction
@@ -51,7 +51,7 @@ endfunction
 function void ROR(`action_args);
   if (`rel + 0) begin
     state.data = {state.data[0], state.data[7:1]};
-    state.rw = 1;
+    state.rw = 0;
   end
   if (`rel + 1) done(state);
 endfunction

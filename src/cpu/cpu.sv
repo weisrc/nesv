@@ -32,10 +32,10 @@ module cpu (
   assign {rw, sync, negative, overflow, unused, brk, decimal, irqb, zero, carry, cycle, sdata, acc,
           x, y, sp, op, tmp, err, addr, pc, mnemonic} = state;
 
-  assign data = rw ? 8'bz : state.data;
+  assign data = rw ? state.data : 8'bz;
 
   always @(posedge clk) begin
-    if (~rw) state.data = data;
+    if (rw) state.data = data;
     if (ready) begin
       if (state.cycle == 0) state.sync = 1;
       execute(state);

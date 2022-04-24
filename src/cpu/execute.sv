@@ -8,7 +8,7 @@ function void execute(inout state_t state);
   if (state.sync) begin
     state.op = state.data;
     state.addr++;
-    state.rw = 0;
+    state.rw = 1;
     state.sync = 0;
   end
   case (state.op[3:0])

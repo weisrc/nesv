@@ -7,9 +7,9 @@
 
 function void push(inout state_t state, input logic [7:0] data);
   state.addr = {8'b1, state.sp};
-  state.rw = 1;
   state.sp--;
   state.data = data;
+  state.rw = 0;
 endfunction
 
 function void pull(inout state_t state);
@@ -18,12 +18,12 @@ function void pull(inout state_t state);
 endfunction
 
 function void read(inout state_t state, input shortint addr);
-  state.rw = 0;
+  state.rw = 1;
   state.addr = addr;
 endfunction
 
 function void write(inout state_t state, input shortint addr, input byte data);
-  state.rw = 1;
+  state.rw = 0;
   state.addr = addr;
   state.data = data;
 endfunction
@@ -32,7 +32,7 @@ function void done(inout state_t state);
   state.addr = state.pc;
   state.cycle = 0;
   state.sync = 1;
-  state.rw = 0;
+  state.rw = 1;
 endfunction
 
 `endif

@@ -5,17 +5,11 @@ function void column_0(inout state_t state);
   case (state.op[7:4])
     'h0: BRK(state);
     'h1: B(~state.negative, state);
-    'h2: begin
-      // TODO: jump to subroutine
-    end
+    'h2: JSR(state, ABS(state));
     'h3: B(state.negative, state);
-    'h4: begin
-      // TODO: return from interrupt
-    end
+    'h4: RTI(state);
     'h5: B(~state.overflow, state);
-    'h6: begin
-      // TODO: return from subroutine
-    end
+    'h6: RTS(state);
     'h7: B(state.overflow, state);
     'h8: B(1, state);
     'h9: B(~state.carry, state);

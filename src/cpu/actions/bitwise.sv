@@ -22,7 +22,7 @@ endfunction
 function void TSB(`action_args);
   if (`rel + 0) begin
     state.data = state.data | state.acc;
-    state.rw = 1;
+    state.rw = 0;
   end
   if (`rel + 1) done(state);
 endfunction
@@ -30,7 +30,7 @@ endfunction
 function void TRB(`action_args);
   if (`rel + 0) begin
     state.data = state.data & ~state.acc;
-    state.rw = 1;
+    state.rw = 0;
   end
   if (`rel + 1) done(state);
 endfunction
